@@ -12,4 +12,18 @@
         <input type="submit" name="buttonDecrease" value="decrease"/>
       </form>
     </div>
+
+    <body>
+        <h1>Current Time:</h1>
+        <p id="current-time">Loading...</p>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+        <script>
+            var socket = io.connect('http://' + document.domain + ':' + location.port);
+    
+            socket.on('update_time', function(data) {
+                document.getElementById('current-time').innerHTML = 'Time: ' + data.time;
+            });
+        </script>
+    </body>
 </html>

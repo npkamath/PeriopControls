@@ -1,4 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-Hello world!
+
+<title>controls</title>
+<div>
+    <form action="/likes/?target=/" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="operation" value="increase"/>
+        <input type="submit" name="buttonIncrease" value="increase"/>
+      </form>
+      <form action="/likes/?target=/" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="operation" value="decrease"/>
+        <input type="submit" name="buttonDecrease" value="decrease"/>
+      </form>
+    </div>
 </html>

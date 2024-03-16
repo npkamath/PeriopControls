@@ -8,21 +8,19 @@ from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
 from kivy.uix.boxlayout import BoxLayout
+from kivy.clock import Clock
+from datetime import datetime
 
-class MainScreen(GridLayout):
-
-    def __init__(self, **kwargs):
-        super(MainScreen, self).__init__(**kwargs)
-        self.add_widget(Label(text='Increase Temp'))
-        self.username = TextInput(multiline=False)
-        self.add_widget(self.username)
 
 class MyApp(App):
+    def update_time(self, *args):
+        self.label.text = datetime.now().strftime('%H:%M:%S')
 
     def build(self):
         layout = BoxLayout(orientation='vertical')
-        button = Button(text='User Name')
-        layout.add_widget(button)
+        self.label = Label(text=datetime.now().strftime('%H:%M:%S'))
+        layout.add_widget(self.label)
+        Clock.schedule_interval(self.update_time, 1)  # Update every second
         return layout
 if __name__ == '__main__':
     MyApp().run()
